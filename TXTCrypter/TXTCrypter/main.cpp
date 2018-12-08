@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "Ceasar.h"
 
 //The choice of ciphers available to the user
 enum ECipher
@@ -44,8 +45,11 @@ int main(int argc, char* argv[])
 	switch (cipher)
 	{
 	case Ceasar:
-
+	{
+		TXTCrypter::Ceasar ceasar(argv[1]);
+		ceasar.Encrypt();
 		break;
+	}
 	default:
 		break;
 	}
