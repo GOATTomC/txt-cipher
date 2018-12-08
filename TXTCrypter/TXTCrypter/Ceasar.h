@@ -1,8 +1,17 @@
 #pragma once
 #include "Cipher.h"
+#include <string>
 
 namespace TXTCrypter
 {
+	//Linked list to store the lines from the file
+	struct LineNode
+	{
+	public:
+		std::string Line;
+		LineNode* NextLineNode = nullptr;
+	};
+
 	//Class used for Ceasar encryptions
 	class Ceasar : public Cipher
 	{
@@ -11,6 +20,10 @@ namespace TXTCrypter
 		~Ceasar();
 
 		//Encrypts the file passed into it's constructor
-		void Encrypt();
+		//Parameters: char* key = the key for the encryption (this case shift index)
+		void Encrypt(char* key);
+
+	private:
+		LineNode* p_FirstLine = nullptr;
 	};
 }

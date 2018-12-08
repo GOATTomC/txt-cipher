@@ -31,8 +31,6 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	std::ofstream file;
-
 	//Validate the file input
 	if (!validateFile(argv[1]))
 	{
@@ -47,7 +45,7 @@ int main(int argc, char* argv[])
 	case Ceasar:
 	{
 		TXTCrypter::Ceasar ceasar(argv[1]);
-		ceasar.Encrypt();
+		ceasar.Encrypt(argv[3]);
 		break;
 	}
 	default:
