@@ -1,13 +1,20 @@
 #include <iostream>
 #include <fstream>
 
+//The choice of ciphers available to the user
 enum ECipher
 {
 	Ceasar = 0
 };
 
-
+//Validates the input arguments
+//parameters: int argc = amount of arguments,
+//char* argv[] = the arguments,
+//EChipher& cipher = OUT the cipher the user want to use
 bool validateInput(int argc, char* argv[], ECipher& cipher);
+
+//Validates the file path
+//parameters: char* arg = the arg containing the file path
 bool validateFile(char* arg);
 
 //Entry point of the program
@@ -33,6 +40,7 @@ int main(int argc, char* argv[])
 		return 2;
 	}
 
+	//Decide behaviour on chosen cipher
 	switch (cipher)
 	{
 	case Ceasar:
