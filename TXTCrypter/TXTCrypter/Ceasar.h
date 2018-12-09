@@ -25,5 +25,14 @@ namespace TXTCrypter
 
 	private:
 		LineNode* p_FirstLine = nullptr;
+
+		//Reads the file and stores the input
+		void ReadFile();
+
+		//Encrypts all the text from the loaded file
+		void EncryptFile(int shiftIndex);
+
+		//Writes the encrypted text back to the txt file
+		void WriteFile();
 	};
 }
