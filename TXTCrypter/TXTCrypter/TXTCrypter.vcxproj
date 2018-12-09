@@ -118,10 +118,12 @@
     <ClCompile Include="Ceasar.cpp" />
     <ClCompile Include="Cipher.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Vigenere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ceasar.h" />
     <ClInclude Include="Cipher.h" />
+    <ClInclude Include="Vigenere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

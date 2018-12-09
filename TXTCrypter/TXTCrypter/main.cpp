@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Ceasar.h"
+#include "Vigenere.h"
 
 //The choice of ciphers available to the user
 enum ECipher
