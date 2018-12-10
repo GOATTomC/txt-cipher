@@ -29,9 +29,14 @@ void TXTCrypter::Vigenere::EncryptFile(std::string key)
 		//Loop through all character
 		for (int i = 0; i < currentLine->Line.length(); i++)
 		{
+			//No action if not a letter
+			if (!isalpha(currentLine->Line[i]))
+			{
+				continue;
+			}
+
 			char keyChar = GetKeyChar(key, i);
 			char newChar = GetCryptChar(currentLine->Line[i], keyChar);
-			std::cout << newChar << std::endl;
 			newLine += newChar;
 		}
 
@@ -61,9 +66,7 @@ char TXTCrypter::Vigenere::GetCryptChar(char currentChar, char keyChar)
 
 	//Get the index of the character in the alphabet
 	isupper(currentChar) ? alphabetIndexCurrent = (currentChar - 65) : alphabetIndexCurrent = (currentChar - 97);
-	isupper(keyChar) ? alphabetIndexKey = (keyChar - 65) : alphabetIndexKey = (currentChar - 97);
-
-	//TODO fix lower case index bug
+	isupper(keyChar) ? alphabetIndexKey = (keyChar - 65) : alphabetIndexKey = (keyChar - 97);
 	
 	int newIndex = alphabetIndexCurrent + alphabetIndexKey;
 
