@@ -28,6 +28,10 @@ namespace TXTCrypter
 		//Writes the encrypted text back to the txt file
 		void WriteFile();
 
+	private:
+		//Free's the memory of the program
+		void Unload(LineNode* line);
+
 
 	};
 }

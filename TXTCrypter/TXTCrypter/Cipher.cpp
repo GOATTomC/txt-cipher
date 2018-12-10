@@ -8,6 +8,7 @@ TXTCrypter::Cipher::Cipher(char * filePath)
 
 TXTCrypter::Cipher::~Cipher()
 {
+	Unload(p_FirstLine);
 }
 
 void TXTCrypter::Cipher::ReadFile()
@@ -45,4 +46,15 @@ void TXTCrypter::Cipher::WriteFile()
 		} while (currentLine != nullptr);
 	}
 	outFile.close();
+}
+
+void TXTCrypter::Cipher::Unload(LineNode * line)
+{
+	if (line == nullptr)
+	{
+		return;
+	}
+
+	Unload(line->NextLineNode);
+	delete line;
 }
