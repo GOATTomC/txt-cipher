@@ -1,4 +1,5 @@
 #include "Vigenere.h"
+#include <iostream>
 
 TXTCrypter::Vigenere::~Vigenere()
 {
@@ -30,7 +31,7 @@ void TXTCrypter::Vigenere::EncryptFile(std::string key)
 		{
 			char keyChar = GetKeyChar(key, i);
 			char newChar = GetCryptChar(currentLine->Line[i], keyChar);
-
+			std::cout << newChar << std::endl;
 			newLine += newChar;
 		}
 
@@ -55,5 +56,27 @@ char TXTCrypter::Vigenere::GetKeyChar(std::string key, int index)
 
 char TXTCrypter::Vigenere::GetCryptChar(char currentChar, char keyChar)
 {
-	return 0;
+	int alphabetIndexCurrent = 0;
+	int alphabetIndexKey = 0;
+
+	//Get the index of the character in the alphabet
+	isupper(currentChar) ? alphabetIndexCurrent = (currentChar - 65) : alphabetIndexCurrent = (currentChar - 97);
+	isupper(keyChar) ? alphabetIndexKey = (keyChar - 65) : alphabetIndexKey = (currentChar - 97);
+
+	//TODO fix lower case index bug
+	
+	int newIndex = alphabetIndexCurrent + alphabetIndexKey;
+
+	//Get new index in alphabet
+	while (newIndex > 25)
+	{
+		newIndex -= 26;
+	}
+
+	char newChar;
+
+	//Get the new char in the correct case
+	isupper(currentChar) ? newChar = 65 + newIndex : newChar = 97 + newIndex;
+
+	return newChar;
 }

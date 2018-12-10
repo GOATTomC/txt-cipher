@@ -6,7 +6,8 @@
 //The choice of ciphers available to the user
 enum ECipher
 {
-	Ceasar = 0
+	Ceasar = 0,
+	Vigenere
 };
 
 //Validates the input arguments
@@ -49,6 +50,12 @@ int main(int argc, char* argv[])
 		ceasar.Encrypt(argv[3]);
 		break;
 	}
+	case Vigenere:
+	{
+		TXTCrypter::Vigenere vigenere(argv[1]);
+		vigenere.Encrypt(argv[3]);
+		break;
+	}
 	default:
 		break;
 	}
@@ -64,6 +71,11 @@ bool validateInput(int argc, char* argv[], ECipher& cipher)
 		cipher = ECipher::Ceasar;
 		return true;
 	}
+	else if (strcmp(argv[2], "Vigenere") == 0 && argc == 4)
+	{
+		cipher = ECipher::Vigenere;
+		return true;
+	}
 
 	return false;
 }
@@ -75,6 +87,7 @@ bool validateFile(char * arg)
 	{
 		return true;
 	}
+	file.close();
 
 	return false;
 }
